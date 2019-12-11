@@ -33,4 +33,7 @@ class LibtidyConan(ConanFile):
         self.copy("*.a", dst="lib", keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = ["tidy-html5"]
+        if self.settings.compiler == "Visual Studio":
+            self.cpp_info.libs = ["tidy.lib"]
+        else:
+            self.cpp_info.libs = ["tidy"]
