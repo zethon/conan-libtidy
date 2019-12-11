@@ -7,6 +7,8 @@ class LibtidyConan(ConanFile):
     name = "tidy-html5"
     version = "5.7.28"
     url = "https://github.com/htacg/tidy-html5"
+    license = "permissive license"
+    description = "The granddaddy of HTML tools, with support for modern standards"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=False"
@@ -23,7 +25,7 @@ class LibtidyConan(ConanFile):
         cmake.build()
 
     def package(self):
-        self.copy("*.h", dst="include", src="source/include")
+        self.copy("*.h", dst="include", src="include")
         self.copy("*.lib", dst="lib", keep_path=False)
         self.copy("*.dll", dst="bin", keep_path=False)
         self.copy("*.so", dst="lib", keep_path=False)
@@ -31,4 +33,4 @@ class LibtidyConan(ConanFile):
         self.copy("*.a", dst="lib", keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = ["hello"]
+        self.cpp_info.libs = ["tidy-html5"]
