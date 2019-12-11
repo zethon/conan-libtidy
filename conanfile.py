@@ -1,6 +1,7 @@
 # tidy-html5 conand recipe 
 # as used by https://github.com/zethon/Owl
 
+import os
 from conans import ConanFile, CMake, tools
 
 class LibtidyConan(ConanFile):
@@ -25,7 +26,7 @@ class LibtidyConan(ConanFile):
         cmake.build()
 
     def package(self):
-        self.copy("*.h", dst="include", src="include")
+        self.copy("*.h", dst="include", src="source/include")
         self.copy("*.lib", dst="lib", keep_path=False)
         self.copy("*.dll", dst="bin", keep_path=False)
         self.copy("*.so", dst="lib", keep_path=False)
