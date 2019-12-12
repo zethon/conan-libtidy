@@ -1,4 +1,4 @@
-# tidy-html5 conand recipe 
+# tidy-html5 conan recipe 
 # as used by https://github.com/zethon/Owl
 
 import os
