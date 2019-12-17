@@ -22,15 +22,14 @@ class LibtidyConan(ConanFile):
 
     def build(self):
         cmake = CMake(self)
+        cmake.definitions["BUILD_SHARED_LIB"] = False
         cmake.configure(source_folder="source")
         cmake.build()
 
     def package(self):
+        self.copy("*.h", dst="include", src="include")
         self.copy("*.h", dst="include", src="source/include")
         self.copy("*.lib", dst="lib", keep_path=False)
-        self.copy("*.dll", dst="bin", keep_path=False)
-        self.copy("*.so", dst="lib", keep_path=False)
-        self.copy("*.dylib", dst="lib", keep_path=False)
         self.copy("*.a", dst="lib", keep_path=False)
 
     def package_info(self):
